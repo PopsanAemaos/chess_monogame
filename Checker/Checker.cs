@@ -824,7 +824,7 @@ namespace Checker
                             if (_gameTable[cuurentTitle.Y - 1, cuurentTitle.X - 1] > 0)
                             {
 
-                                returnVectors.Add(new Point(cuurentTitle.X - 1, cuurentTitle.Y + 1));
+                                returnVectors.Add(new Point(cuurentTitle.X - 1, cuurentTitle.Y - 1));
                             }
                         }
                         break;
