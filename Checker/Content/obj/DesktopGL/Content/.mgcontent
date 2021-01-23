@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/bishop.png</File>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/Chip.png</File>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/GameText.spritefont</File>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/Horse.png</File>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/king.png</File>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/knight.png</File>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/pawn.png</File>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/queen.png</File>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/rook.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

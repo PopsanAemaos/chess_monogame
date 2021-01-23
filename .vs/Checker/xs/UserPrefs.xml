@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{FC666F25-4FD2-4629-8B89-9F972CC98E01}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Checker/Program.cs">
+    <Files>
+      <File FileName="Checker/Checker.cs" Line="260" Column="143" />
+      <File FileName="Checker/Program.cs" Line="11" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Checker" expanded="True">
+            <Node name="Checker" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Checker PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
