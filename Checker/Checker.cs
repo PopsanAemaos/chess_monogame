@@ -26,16 +26,17 @@ namespace Checker
             TurnBeginning,
             WaitingForSelection,
             ChipSelected,
+            ChangePawn,
             TrunEnded,
             GameEnded
         }
         GameState _currenGameState;
         MouseState _mouseState, _previousMouseState;
-        Point _clickedPos, _selectPos;
+        Point _clickedPos, _selectPos, _posPawn;
 
         //TODO: Image files and font
         Texture2D _king, _queen, _bishtop, _rook, _knight,_pawn, _rect;
-        
+        SpriteFont _font;
         int[,] _gameTable;
 
         public Checker()
@@ -49,7 +50,7 @@ namespace Checker
         protected override void Initialize()
         {
             _graphics.PreferredBackBufferWidth = 600;  // set this value to the desired width of your window
-            _graphics.PreferredBackBufferHeight = 600;   // set this value to the desired height of your window
+            _graphics.PreferredBackBufferHeight = 855;   // set this value to the desired height of your window
             _graphics.ApplyChanges();
 
             _currentPlayerTurn = PlayerTurn.RedTurn;
@@ -58,22 +59,22 @@ namespace Checker
 
             _gameTable = new int[8, 8]
             {
-                { 3,5,4,2,1,4,5,3},
-                { 6,6,6,6,6,6,6,6},
+                //{ 3,5,4,2,1,4,5,3},
+                //{ 6,6,6,6,6,6,6,6},
+                //{ 0,0,0,0,0,0,0,0},
+                //{ 0,0,0,0,0,0,0,0},
+                //{ 0,0,0,0,0,0,0,0},
+                //{ 0,0,0,0,0,0,0,0},
+                //{ -6,-6,-6,-6,-6,-6,-6,-6},
+                //{ -3,-5,-4,-1,-2,-4,-5,-3}
+                { 3,5,4,0,0,4,5,3},
+                { 6,6,6,0,0,6,6,6},
                 { 0,0,0,0,0,0,0,0},
                 { 0,0,0,0,0,0,0,0},
                 { 0,0,0,0,0,0,0,0},
                 { 0,0,0,0,0,0,0,0},
-                { -6,-6,-6,-6,-6,-6,-6,-6},
-                { -3,-5,-4,-1,-2,-4,-5,-3}
-                //{ 0,0,0,0,0,0,0,0},
-                //{ 0,0,0,1,0,0,0,0},
-                //{ 0,0,0,0,0,0,0,0},
-                //{ 0,1,0,-5,0,0,1,0},
-                //{ 0,0,0,0,0,0,0,0},
-                //{ 0,0,0,0,0,0,0,0},
-                //{ 0,0,0,1,0,0,0,0},
-                //{ 0,0,0,0,0,0,0,0}
+                { -6,0,-6,-6,-6,-6,-6,-6},
+                { -3,0,-4,-1,-2,-4,-5,-3}
             };
 
             _possibleClicked = new List<Point>();
@@ -92,6 +93,8 @@ namespace Checker
             _bishtop = this.Content.Load<Texture2D>("bishop");
             _knight = this.Content.Load<Texture2D>("knight");
             _pawn = this.Content.Load<Texture2D>("pawn");
+            _font = this.Content.Load<SpriteFont>("GameText");
+
             //_chip = this.Content.Load<Texture2D>("Chip");
             //_horse = this.Content.Load<Texture2D>("king");
             _rect = new Texture2D(_graphics.GraphicsDevice, _TILESIZE, _TILESIZE);
@@ -183,13 +186,72 @@ namespace Checker
                         {
                             _gameTable[_clickedPos.Y, _clickedPos.X] = _gameTable[_selectPos.Y, _selectPos.X];
                             _gameTable[_selectPos.Y, _selectPos.X] = 0;
-                            _currenGameState = GameState.TrunEnded;
-
-                            //_possibleClicked.AddRange(FindPossibleMoves(_clickedPos));
-
-                            //_currenGameState = GameState.ChipSelected;
+                            if (_currentPlayerTurn == PlayerTurn.RedTurn)
+                            {
+                                if (_clickedPos.Y == 0 && System.Math.Abs(_gameTable[_clickedPos.Y, _clickedPos.X]) == 6)
+                                {
+                                    _posPawn = _clickedPos;
+                                    _currenGameState = GameState.ChangePawn;
+                                }
+                                else
+                                {
+                                    _currenGameState = GameState.TrunEnded;
+                                }
+                            }
+                            else if (_currentPlayerTurn == PlayerTurn.YellowTurn)
+                            {
+                                if (_clickedPos.Y == 7 && System.Math.Abs(_gameTable[_clickedPos.Y, _clickedPos.X]) == 6)
+                                {
+                                    _posPawn = _clickedPos;
+                                    _currenGameState = GameState.ChangePawn;
+                                }
+                                else
+                                {
+                                    _currenGameState = GameState.TrunEnded;
+                                }
+                            }
                         }
+                    }
+                    break;
+                case GameState.ChangePawn:
+                    _mouseState = Mouse.GetState();
+                    _possibleClicked.Clear();
+                    _possibleClicked.Add(new Point(3, 9));
+                    _possibleClicked.Add(new Point(4, 9));
+                    _possibleClicked.Add(new Point(5, 9));
+                    _possibleClicked.Add(new Point(6, 9));
+                    if (_mouseState.LeftButton == ButtonState.Pressed)
+                    {
+                        int xPos = _mouseState.X / _TILESIZE;
+                        int yPos = _mouseState.Y / _TILESIZE;
 
+                        _clickedPos = new Point(xPos, yPos);
+                        if (_possibleClicked.Contains(_clickedPos))
+                        {
+                            if (_clickedPos.Y == 9)
+                            {
+                                switch (_clickedPos.X)
+                                {
+                                    case 3:
+                                        if (_currentPlayerTurn == PlayerTurn.RedTurn) _gameTable[_posPawn.Y, _posPawn.X] = -3;
+                                        else _gameTable[_posPawn.Y, _posPawn.X] = 3;
+                                       break;
+                                    case 4:
+                                        if (_currentPlayerTurn == PlayerTurn.RedTurn) _gameTable[_posPawn.Y, _posPawn.X] = -4;
+                                        else _gameTable[_posPawn.Y, _posPawn.X] = 4;
+                                       break;
+                                    case 5:
+                                        if (_currentPlayerTurn == PlayerTurn.RedTurn) _gameTable[_posPawn.Y, _posPawn.X] = -2;
+                                        else _gameTable[_posPawn.Y, _posPawn.X] = 2;
+                                       break;                                       
+                                    case 6:
+                                        if (_currentPlayerTurn == PlayerTurn.RedTurn) _gameTable[_posPawn.Y, _posPawn.X] = -5;
+                                        else _gameTable[_posPawn.Y, _posPawn.X] = 5;
+                                       break;
+                                }
+                            }
+                            _currenGameState = GameState.TrunEnded;
+                        }
                     }
                     break;
                 case GameState.TrunEnded:
@@ -200,7 +262,6 @@ namespace Checker
                     else if (_currentPlayerTurn == PlayerTurn.YellowTurn) _currentPlayerTurn = PlayerTurn.RedTurn;
 
                     _currenGameState = GameState.TurnBeginning;
-
                     break;
                 case GameState.GameEnded:
                     break;
@@ -242,6 +303,18 @@ namespace Checker
                     {
                         _spriteBatch.Draw(_rect, new Vector2(_TILESIZE * p.X, _TILESIZE * p.Y), null, Color.LightCoral, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                     }
+                    break;
+                case GameState.ChangePawn:
+                    _spriteBatch.Draw(_rect, new Vector2(_TILESIZE * _posPawn.X, _TILESIZE * _posPawn.Y), null, Color.Gold, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    _spriteBatch.Draw(_rect, new Vector2(_TILESIZE * 3, _TILESIZE * 9), null, Color.LightSkyBlue, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    _spriteBatch.Draw(_rook, new Vector2(_TILESIZE * 3, _TILESIZE * 9), null, Color.AntiqueWhite, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    _spriteBatch.Draw(_rect, new Vector2(_TILESIZE * 4, _TILESIZE * 9), null, Color.LightSkyBlue, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    _spriteBatch.Draw(_bishtop, new Vector2(_TILESIZE * 4, _TILESIZE * 9), null, Color.AntiqueWhite, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    _spriteBatch.Draw(_rect, new Vector2(_TILESIZE * 5, _TILESIZE * 9), null, Color.LightSkyBlue, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    _spriteBatch.Draw(_queen, new Vector2(_TILESIZE * 5, _TILESIZE * 9), null, Color.AntiqueWhite, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    _spriteBatch.Draw(_rect, new Vector2(_TILESIZE * 6, _TILESIZE * 9), null, Color.LightSkyBlue, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    _spriteBatch.Draw(_knight, new Vector2(_TILESIZE * 6, _TILESIZE * 9), null, Color.AntiqueWhite, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                    _spriteBatch.DrawString(_font, "CHANGE PARW TO =>", new Vector2(40, 700), Color.Black);
                     break;
                 case GameState.TrunEnded:
                     break;
@@ -1368,5 +1441,6 @@ namespace Checker
             }
             return returnVectors;
         }
+        
     }
 }
