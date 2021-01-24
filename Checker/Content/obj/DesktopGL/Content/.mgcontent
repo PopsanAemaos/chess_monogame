@@ -6,6 +6,7 @@
   <SourceFiles>
     <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/bishop.png</File>
     <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/Chip.png</File>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/File.spritefont</File>
     <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/GameText.spritefont</File>
     <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/Horse.png</File>
     <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/king.png</File>
@@ -13,8 +14,11 @@
     <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/pawn.png</File>
     <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/queen.png</File>
     <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/rook.png</File>
+    <File>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/Select.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/Select.spritefont</SourceFile>
+  <SourceTime>2021-01-22T18:34:15.9270741+07:00</SourceTime>
+  <DestFile>/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/Content/bin/DesktopGL/Content/Select.xnb</DestFile>
+  <DestTime>2021-01-24T23:30:50.2683922+07:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2020-08-10T16:17:54+07:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2020-08-10T16:17:54+07:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

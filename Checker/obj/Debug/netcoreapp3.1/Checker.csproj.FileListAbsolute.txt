@@ -108,3 +108,5 @@ D:/Development/Monogame/Computer Game Programming/OpenGL Version/Week 2/Checker_
 /Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/obj/Debug/netcoreapp3.1/Checker.dll
 /Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/obj/Debug/netcoreapp3.1/Checker.pdb
 /Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/obj/Debug/netcoreapp3.1/Checker.genruntimeconfig.cache
+/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/bin/Debug/netcoreapp3.1/Content/Select.xnb
+/Users/popsan/Documents/comsci/game_programing/chess_monogame/Checker/bin/Debug/netcoreapp3.1/Content/File.xnb
