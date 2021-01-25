@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace Checker
 {
@@ -32,7 +31,7 @@ namespace Checker
             ChipSelected,
             Check,
             WaitingForCheck,
-            ChangePawn,          
+            ChangePawn,
             TrunEnded,
             GameEnded
         }
@@ -41,7 +40,7 @@ namespace Checker
         Point _clickedPos, _selectPos, _posPawn, _kingPos;
 
         //TODO: Image files and font
-        Texture2D _king, _queen, _bishtop, _rook, _knight,_pawn, _rect, _rectText;
+        Texture2D _king, _queen, _bishtop, _rook, _knight, _pawn, _rect, _rectText;
         SpriteFont _font;
         int[,] _gameTable;
 
@@ -127,7 +126,7 @@ namespace Checker
                 case GameState.TurnBeginning:
                     // Search for available moves
                     _possibleClicked.Clear();
-                    for(int i = 0; i < 8; i++)
+                    for (int i = 0; i < 8; i++)
                     {
                         for (int j = 0; j < 8; j++)
                         {
@@ -139,8 +138,8 @@ namespace Checker
                                     if (FindPossibleMoves(new Point(i, j)).Count > 0)
                                     {
                                         _possibleClicked.Add(new Point(i, j));
-                                    }                                   
-                                }                               
+                                    }
+                                }
                             }
                             else if (_currentPlayerTurn == PlayerTurn.YellowTurn)
                             {
@@ -192,7 +191,7 @@ namespace Checker
 
                         _clickedPos = new Point(xPos, yPos);
                         if (_possibleClicked.Contains(_clickedPos))
-                        {   
+                        {
                             _gameTable[_clickedPos.Y, _clickedPos.X] = _gameTable[_selectPos.Y, _selectPos.X];
                             _gameTable[_selectPos.Y, _selectPos.X] = 0;
                             //_CheckPos
@@ -203,28 +202,28 @@ namespace Checker
                                 for (int j = 0; j < 8; j++)
                                 {
                                     if (_currentPlayerTurn == PlayerTurn.RedTurn)
-                                    {                                      
-                                        if (_gameTable[j, i] == 1 )
-                                        {
-                                            endGameCheck = 1;
-                                        }
-                                        
-                                    }
-                                    else if (_currentPlayerTurn == PlayerTurn.YellowTurn)
                                     {
-                                       
                                         if (_gameTable[j, i] == 1)
                                         {
                                             endGameCheck = 1;
                                         }
-                                        
+
+                                    }
+                                    else if (_currentPlayerTurn == PlayerTurn.YellowTurn)
+                                    {
+
+                                        if (_gameTable[j, i] == 1)
+                                        {
+                                            endGameCheck = 1;
+                                        }
+
                                     }
                                 }
                             }
-                            if(endGameCheck == 1)
+                            if (endGameCheck == 1)
                             {
                                 if (_currentPlayerTurn == PlayerTurn.RedTurn)
-                                {                           
+                                {
                                     if (_gameTable[_clickedPos.Y, _clickedPos.X] == -66)
                                     {
                                         _gameTable[_clickedPos.Y, _clickedPos.X] = -6;
@@ -250,7 +249,7 @@ namespace Checker
                                         _gameTable[_clickedPos.Y, _clickedPos.X] = 6;
                                     }
                                     if (_gameTable[_clickedPos.Y, _clickedPos.X] == 6 && System.Math.Abs(_clickedPos.Y - _selectPos.Y) == 2)
-                                    { 
+                                    {
                                         _gameTable[_clickedPos.Y, _clickedPos.X] = 66;
                                     }
                                     if (_clickedPos.Y == 7 && System.Math.Abs(_gameTable[_clickedPos.Y, _clickedPos.X]) == 6)
@@ -269,7 +268,7 @@ namespace Checker
                                 _currenGameState = GameState.GameEnded;
                             }
                         }
-                      
+
                     }
                     break;
                 case GameState.ChangePawn:
@@ -339,7 +338,7 @@ namespace Checker
                                     if (FindPossibleMoves(new Point(i, j)).Count > 0)
                                     {
                                         _checkKing.AddRange(FindPossibleMoves(new Point(i, j)));
-                                    }                        
+                                    }
                                 }
                             }
                         }
@@ -400,11 +399,11 @@ namespace Checker
             _spriteBatch.Begin();
 
             //TODO: Draw board
-            for(int i = 0; i < 8; i++ )
+            for (int i = 0; i < 8; i++)
             {
-                for(int j = 0; j < 8; j++)
+                for (int j = 0; j < 8; j++)
                 {
-                    if(((i + j) % 2) == 0)
+                    if (((i + j) % 2) == 0)
                     {
                         _spriteBatch.Draw(_rect, new Vector2(_TILESIZE * j, _TILESIZE * i), null, Color.Tan, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                     }
@@ -425,7 +424,7 @@ namespace Checker
                     {
                         _spriteBatch.Draw(_rect, new Vector2(_TILESIZE * p.X, _TILESIZE * p.Y), null, Color.LightCoral, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                     }
-                    break;                
+                    break;
                 case GameState.ChangePawn:
                     _spriteBatch.Draw(_rect, new Vector2(_TILESIZE * _posPawn.X, _TILESIZE * _posPawn.Y), null, Color.Gold, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                     _spriteBatch.Draw(_rect, new Vector2(_TILESIZE * 3, _TILESIZE * 9), null, Color.LightSkyBlue, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
@@ -464,12 +463,12 @@ namespace Checker
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    switch (System.Math.Abs(_gameTable[i , j]))
+                    switch (System.Math.Abs(_gameTable[i, j]))
                     {
                         case 1:
-                            if (_gameTable[i, j] < 0 ) _spriteBatch.Draw(_king, new Vector2(_TILESIZE * j, _TILESIZE * i), null, Color.DimGray, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+                            if (_gameTable[i, j] < 0) _spriteBatch.Draw(_king, new Vector2(_TILESIZE * j, _TILESIZE * i), null, Color.DimGray, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                             else _spriteBatch.Draw(_king, new Vector2(_TILESIZE * j, _TILESIZE * i), null, Color.AntiqueWhite, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-                        break;
+                            break;
                         case 2:
                             if (_gameTable[i, j] < 0) _spriteBatch.Draw(_queen, new Vector2(_TILESIZE * j, _TILESIZE * i), null, Color.DimGray, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
                             else _spriteBatch.Draw(_queen, new Vector2(_TILESIZE * j, _TILESIZE * i), null, Color.AntiqueWhite, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
@@ -593,7 +592,7 @@ namespace Checker
                                 returnVectors.Add(new Point(cuurentTitle.X, i));
                                 break;
                             }
-                            else 
+                            else
                             {
                                 break;
                             }
@@ -1054,7 +1053,7 @@ namespace Checker
                                 returnVectors.Add(new Point(cuurentTitle.X - 1, cuurentTitle.Y - 1));
                             }
                         }
-                       
+
                         break;
                 }
             }

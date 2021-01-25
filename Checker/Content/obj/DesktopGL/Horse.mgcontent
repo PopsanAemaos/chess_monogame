@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/popsan/Documents/comsci/game_programing/chess/Checker/Checker/Content/Horse.png</SourceFile>
-  <SourceTime>2017-06-26T01:08:00+07:00</SourceTime>
-  <DestFile>/Users/popsan/Documents/comsci/game_programing/chess/Checker/Checker/Content/bin/DesktopGL/Horse.xnb</DestFile>
-  <DestTime>2021-01-23T18:32:11.7972098+07:00</DestTime>
+  <SourceFile>D:/Dropbox/Personal/Teaching/Computer Games Programming/2-63/Week 2/Checker_Lab/Checker/Checker/Content/Horse.png</SourceFile>
+  <SourceTime>2017-06-26T01:07:59+07:00</SourceTime>
+  <DestFile>D:/Dropbox/Personal/Teaching/Computer Games Programming/2-63/Week 2/Checker_Lab/Checker/Checker/Content/bin/DesktopGL/Horse.xnb</DestFile>
+  <DestTime>2021-01-14T18:31:08.569149+07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

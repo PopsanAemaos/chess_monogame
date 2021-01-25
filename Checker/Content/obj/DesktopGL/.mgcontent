@@ -4,9 +4,9 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/Users/popsan/Documents/comsci/game_programing/chess/Checker/Checker/Content/Chip.png</File>
-    <File>/Users/popsan/Documents/comsci/game_programing/chess/Checker/Checker/Content/GameText.spritefont</File>
-    <File>/Users/popsan/Documents/comsci/game_programing/chess/Checker/Checker/Content/Horse.png</File>
+    <File>D:/Dropbox/Personal/Teaching/Computer Games Programming/2-63/Week 2/Checker_Lab/Checker/Checker/Content/Chip.png</File>
+    <File>D:/Dropbox/Personal/Teaching/Computer Games Programming/2-63/Week 2/Checker_Lab/Checker/Checker/Content/GameText.spritefont</File>
+    <File>D:/Dropbox/Personal/Teaching/Computer Games Programming/2-63/Week 2/Checker_Lab/Checker/Checker/Content/Horse.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

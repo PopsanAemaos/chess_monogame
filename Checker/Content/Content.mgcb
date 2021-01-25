@@ -37,13 +37,6 @@
 /processorParam:TextureFormat=Color
 /build:Chip.png
 
-#begin File.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:File.spritefont
-
 #begin GameText.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -122,11 +115,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:rook.png
-
-#begin Select.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:Select.spritefont
 
